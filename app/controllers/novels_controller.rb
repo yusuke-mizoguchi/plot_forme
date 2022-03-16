@@ -21,7 +21,6 @@ class NovelsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @novel = Novel.find(params[:id])
     @review = Review.new
     @reviews = @novel.reviews.includes(:user).order(created_at: :desc)

@@ -13,7 +13,7 @@
               <%= novel.story_length %>
             </li>
             <li class="list-inline-item">
-              <%= novel.user.name %>
+              <%= link_to novel.user.name, user_path(novel.user.id) %>
             </li>
             <li class="list-inline-item">
               <%= l novel.created_at, format: :long %>
