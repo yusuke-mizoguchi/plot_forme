@@ -1,0 +1,26 @@
+<header>
+  <nav class="navbar navbar-expand-lg navigation container">
+
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <%= 'プロットフォーム' %>
+    <% end %>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav m-auto main-nav align-items-center list-unstyled">
+        <li class="nav-item">
+          <%= link_to '作品一覧', novels_path, class: 'nav-link' %>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto main-nav align-items-center list-unstyled">
+        <li class="nav-item">
+          <%= link_to 'ログイン', login_path, class: 'nav-link' %>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto main-nav align-items-center list-unstyled">
+        <li class="nav-item">
+          <%= link_to '新規登録', new_user_path, class: 'nav-link' %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,19 @@
+<div id="user_create-id-<%= user_creates.id %>">
+<table class="table">
+  <tr>
+    <td><%= link_to user_creates.user.name, user_path(user_creates.user.id) %>
+  </tr>
+  <tr>
+    <td><%= link_to user_creates.title, novel_path(user_creates.id) %></td>
+  </tr>
+  <tr>
+    <td><%= user_creates.genre %>
+    <%= user_creates.story_length %></td>
+  </tr>
+    <% if user_creates.user.id == current_user.id %>
+    <tr>
+      <td><%= user_creates.release %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
