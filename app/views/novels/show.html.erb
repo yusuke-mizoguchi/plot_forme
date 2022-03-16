@@ -30,7 +30,7 @@
   <% unless current_user.id == @nobel.user.id %>
     <!-- レビューフォーム -->
     <%= render 'reviews/form', { novel: @novel, review: @review } %>
-    <!-- レビューエリア -->
-    <%= render 'reviews/reviews', { reviews: @reviews } %>
   <% end %>
+  <!-- レビューエリア -->
+  <%= render 'reviews/reviews', { reviews: @reviews } %>
 </div>
