@@ -1,13 +1,13 @@
-<% @reviews.each do |review| %>
+<div id="user_reviews-id-<%= user_reviews.id %>">
   <table class="table">
     <tr>
-      <td><%= link_to review.novel.title, novel_path(review.novel.id) %></td>
+      <td><%= link_to user_reviews.novel.title, novel_path(user_reviews.novel.id) %></td>
     </tr>
     <tr>
-        <td><%= review.novel.genre %></td>
+        <td><%= user_reviews.novel.genre %></td>
     </tr>
     <tr>
-        <td><%= review.novel.story_length %></td>
+        <td><%= user_reviews.novel.story_length %></td>
     </tr>
   </table>
-<% end %>
+</div>
