@@ -13,7 +13,6 @@ class NovelsController < ApplicationController
 
   def create
     @novel_create_form = NovelCreateForm.new(novel_params)
-    byebug
     if @novel_create_form.save
       redirect_to novels_path
     else
@@ -22,7 +21,6 @@ class NovelsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @novel = Novel.find(params[:id])
     @review = Review.new
     @reviews = @novel.reviews.includes(:user).order(created_at: :desc)

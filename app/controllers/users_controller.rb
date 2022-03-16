@@ -16,14 +16,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @q = Novel.ransack(params[:q])
-    @user_creates = @q.result(distinct: true).includes(:user).order(created_at: :desc)
-
     @user = User.find(params[:id])
-    @novel_list = @user.novels.order(created_at: :desc)
-    @novels = Kaminari.paginate_array(@novel_list).page(params[:page]).per(1)
-    @review_list = @user.reviews.order(created_at: :desc)
-    @reviews = Kaminari.paginate_array(@review_list).page(params[:page]).per(4)
+
+    @user_novels = @user.novels.page(params[:page]).per(1)
+    @user_reviews = @user.reviews.page(params[:page]).per(1)
 
     respond_to do |format|
       format.html

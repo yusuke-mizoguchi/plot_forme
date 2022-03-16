@@ -1,0 +1,13 @@
+<% @reviews.each do |review| %>
+  <table class="table">
+    <tr>
+      <td><%= link_to review.novel.title, novel_path(review.novel.id) %></td>
+    </tr>
+    <tr>
+        <td><%= review.novel.genre %></td>
+    </tr>
+    <tr>
+        <td><%= review.novel.story_length %></td>
+    </tr>
+  </table>
+<% end %>

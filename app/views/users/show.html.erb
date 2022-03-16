@@ -3,7 +3,7 @@
     <div class="col-md-10 offset-md-1">
       <h1 class="float-left mb-5"><%= 'プロフィール' %></h1>
       <% if current_user.id == @user.id %>
-        <%= link_to '編集', edit_user_path(@user), class: "btn btn-success pull-right", remote: true %>
+        <%= link_to '編集', edit_user_path(@user), class: "btn btn-success pull-right" %>
       <% end %>
       <table class="table">
         <tr>
@@ -25,14 +25,14 @@
         <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" />
         <label class="tab-label" for="TAB-01">投稿した作品</label>
         <div class="tab-content">
-          <%= render partial: 'user_creates', collection: @user_creates %>
-          <%= paginate @novels, id: "js-show-novels", remote: true %>
+          <%= render partial: 'user_novels', collection: @user_novels %>
+          <%= paginate @user_novels, id: "js-show-novels", remote: true %>
         </div>
         <input id="TAB-02" type="radio" name="TAB" class="tab-switch" checked="checked" />
         <label class="tab-label" for="TAB-02">批評した作品</label>
         <div class="tab-content">
-          <%= render 'users/show_reviews' %>
-          <%= paginate @reviews, id: "js-show-reviews", remote: true %>
+          <%= render @user_reviews %>
+          <%= paginate @user_reviews, id: "js-show-reviews", remote: true %>
         </div>
       </div>
     </ul>
