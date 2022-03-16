@@ -27,9 +27,10 @@
     </div>
   </div>
 
-  <!-- レビューフォーム -->
-  <%= render 'reviews/form', { novel: @novel, review: @review } %>
-
-  <!-- レビューエリア -->
-  <%= render 'reviews/reviews', { reviews: @reviews } %>
+  <% unless current_user.id == @nobel.user.id %>
+    <!-- レビューフォーム -->
+    <%= render 'reviews/form', { novel: @novel, review: @review } %>
+    <!-- レビューエリア -->
+    <%= render 'reviews/reviews', { reviews: @reviews } %>
+  <% end %>
 </div>
