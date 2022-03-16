@@ -13,7 +13,6 @@ class NovelsController < ApplicationController
 
   def create
     @novel_create_form = NovelCreateForm.new(novel_params)
-    byebug
     if @novel_create_form.save
       redirect_to novels_path
     else

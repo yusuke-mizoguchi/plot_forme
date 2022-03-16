@@ -13,11 +13,9 @@
               <%= novel.story_length %>
             </li>
             <li class="list-inline-item">
-              <%= icon 'far', 'user' %>
               <%= novel.user.name %>
             </li>
             <li class="list-inline-item">
-              <%= icon 'far', 'calendar' %>
               <%= l novel.created_at, format: :long %>
             </li>
           </ul>
