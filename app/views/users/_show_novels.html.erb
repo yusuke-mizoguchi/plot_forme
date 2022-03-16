@@ -1,7 +1,7 @@
-<div id="user_create-id-<%= user_novels.id %>">
+<div id="user_novels-id-<%= user_novels.id %>">
   <table class="table">
     <tr>
-      <td><%= link_to user_novels.user.name, user_path(user_novels.user.id) %>
+      <td><%= user_novels.user.name %>
     </tr>
     <tr>
       <td><%= link_to user_novels.title, novel_path(user_novels.id) %></td>
@@ -10,7 +10,7 @@
       <td><%= user_novels.genre %>
       <%= user_novels.story_length %></td>
     </tr>
-      <% if user_novels.user.id == current_user.id %>
+    <% if user_novels.user.id == current_user.id %>
       <tr>
         <td><%= user_novels.release %></td>
       </tr>
