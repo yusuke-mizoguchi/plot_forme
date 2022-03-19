@@ -1,5 +1,4 @@
 class NovelsController < ApplicationController
-  before_action :set_novel, only: [:update]
   skip_before_action :require_login, only: [:index, :show]
 
   def index
@@ -25,7 +24,17 @@ class NovelsController < ApplicationController
     @review = Review.new
     @reviews = @novel.reviews.includes(:user).order(created_at: :desc)
 
-    
+    if @novel.user.id == current_user.id
+      render 'novel_data', {novel: @novel}
+    elsif (@novel.release != "draft") && current_user&.role == "writer"
+      render 'novel_data', {novel: @novel}
+    elsif (@novel.release == "release" || @novel.release == "reader") && current_user&.role == "reader"
+      render 'novel_data', {novel: @novel}
+    elsif @novel.release == 'release'
+      render 'novel_data', {novel: @novel}
+    else
+      render novels_path
+    end
   end
 
   def edit
@@ -36,6 +45,7 @@ class NovelsController < ApplicationController
   end
 
   def update
+    @novel_create_form = current_user.novels.find(params[:id])
     if @novel_create_form.update(novel_params)
       redirect_to novel_path
     else
@@ -50,10 +60,6 @@ class NovelsController < ApplicationController
   end
 
   private
-
-  def set_novel
-    @novel_create_form = current_user.novels.find(params[:id])
-  end
 
   def novel_params
     params.require(:novel_create_form).permit(
