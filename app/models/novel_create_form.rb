@@ -25,10 +25,8 @@ class NovelCreateForm
   end
 
   def save
-    # 有効でない値の場合はこの時点でfalseを返す
     return false if invalid?
 
-    # トランザクションを使用し、データを保存
     ActiveRecord::Base.transaction do
       novel = Novel.new(novel_params)
       novel.save!
@@ -40,7 +38,6 @@ class NovelCreateForm
         novel.characters.create!(character_text: character_text)
       end
     end
-    # saveメソッドの返り値はboolean型を返すためtrueを明示
     true
   end
 
