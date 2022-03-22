@@ -46,8 +46,8 @@ class NovelsController < ApplicationController
 
   def update
     @novel = current_user.novels.find(params[:id])
-    @novel_update_form = NovelUpdateForm.new(novel_params, novel: @novel)
-    if @novel_update_form.update
+    @novel_create_form = NovelCreateForm.new(novel_params, novel: @novel)
+    if @novel_create_form.update
       redirect_to novel_path
     else
       render :new
@@ -63,7 +63,7 @@ class NovelsController < ApplicationController
   private
 
   def novel_params
-    params.require(:novel_create_form).permit(
+    params.require(:novel).permit(
                   :title, :genre, :story_length, :plot, :image, :release, :character_role, :character_text).merge(
                   user_id: current_user.id)
   end
