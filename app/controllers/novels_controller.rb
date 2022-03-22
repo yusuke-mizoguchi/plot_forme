@@ -25,13 +25,13 @@ class NovelsController < ApplicationController
     @reviews = @novel.reviews.includes(:user).order(created_at: :desc)
 
     if @novel.user.id == current_user.id
-      render 'novel_data', {novel: @novel}
+      render "novels/show"
     elsif (@novel.release != "draft") && current_user&.role == "writer"
-      render 'novel_data', {novel: @novel}
+      render "novels/show"
     elsif (@novel.release == "release" || @novel.release == "reader") && current_user&.role == "reader"
-      render 'novel_data', {novel: @novel}
-    elsif @novel.release == 'release'
-      render 'novel_data', {novel: @novel}
+      render "novels/show"
+    elsif @novel.release == "release"
+      render "novels/show"
     else
       render novels_path
     end
@@ -45,8 +45,9 @@ class NovelsController < ApplicationController
   end
 
   def update
-    @novel_create_form = current_user.novels.find(params[:id])
-    if @novel_create_form.update(novel_params)
+    @novel = current_user.novels.find(params[:id])
+    @novel_update_form = NovelUpdateForm.new(novel_params, novel: @novel)
+    if @novel_update_form.update
       redirect_to novel_path
     else
       render :new
