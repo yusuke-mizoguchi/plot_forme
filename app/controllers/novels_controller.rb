@@ -8,6 +8,9 @@ class NovelsController < ApplicationController
 
   def new
     @novel_create_form = NovelCreateForm.new
+    unless current_user.role == "writer"
+      render novels_path
+    end
   end
 
   def create
