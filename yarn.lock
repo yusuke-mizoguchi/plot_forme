@@ -82,6 +82,13 @@ braces@~3.0.2:
   optionalDependencies:
     fsevents "~2.3.2"
 
+cocoon-js@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/cocoon-js/-/cocoon-js-0.0.5.tgz#2d269db2e3375014dbc43e4dda3bdd8d161b238b"
+  integrity sha512-1h51/2LDnZdyQehtIIA4eqCMSef4yFvUwXQF1XWRp12KSVLCXrvuGOsnoEm7OXviM7wgEiTf1nAkjbyws9i1EQ==
+  dependencies:
+    jquery "^3.2.1"
+
 esbuild-android-64@0.14.27:
   version "0.14.27"
   resolved "https://registry.yarnpkg.com/esbuild-android-64/-/esbuild-android-64-0.14.27.tgz#b868bbd9955a92309c69df628d8dd1945478b45c"
@@ -256,7 +263,7 @@ is-number@^7.0.0:
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-7.0.0.tgz#7535345b896734d5f80c4d06c50955527a14f12b"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
 
-jquery@^3.3.1:
+jquery@^3.2.1, jquery@^3.3.1:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
   integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
