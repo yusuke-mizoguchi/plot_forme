@@ -3,6 +3,8 @@ class Novel < ApplicationRecord
   has_many :characters, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
+  accepts_nested_attributes_for :characters, allow_destroy: true
+
   validates :title, length: { maximum: 50 }, uniqueness: true, presence: true
   validates :plot, length: { maximum: 5000 }, presence: true
 
