@@ -1,4 +1,5 @@
 class NovelsController < ApplicationController
+  before_action :set_novel, only: [:show, :edit, :update]
   skip_before_action :require_login, only: [:index, :show]
 
   def index
@@ -7,15 +8,15 @@ class NovelsController < ApplicationController
   end
 
   def new
-    @novel_create_form = NovelCreateForm.new
+    @novel = Novel.new
     unless current_user.role == "writer"
       render novels_path
     end
   end
 
   def create
-    @novel_create_form = NovelCreateForm.new(novel_params)
-    if @novel_create_form.save
+    @novel = Novel.new(novel_params)
+    if @novel.save
       redirect_to novels_path
     else
       render :new
@@ -23,7 +24,6 @@ class NovelsController < ApplicationController
   end
 
   def show
-    @novel = Novel.find(params[:id])
     @review = Review.new
     @reviews = @novel.reviews.includes(:user).order(created_at: :desc)
 
@@ -41,33 +41,34 @@ class NovelsController < ApplicationController
   end
 
   def edit
-    @novel = Novel.find(params[:id])
     unless @novel.user.id == current_user.id
       redirect_to novel_path(@novel)
     end
   end
 
   def update
-    @novel = current_user.novels.find(params[:id])
-    @novel_create_form = NovelCreateForm.new(novel_params, novel: @novel)
-    if @novel_create_form.update
-      redirect_to novel_path
+    if @novel.update(novel_params)
+      redirect_to novel_path(params[:id])
     else
       render :new
     end
   end
 
   def destroy
-    @novel = current_user.novels.find(params[:id])
     @novel.destroy!
     redirect_to novels_path
   end
 
   private
 
+  def set_novel
+    @novel = current_user.novels.find(params[:id])
+  end
+
   def novel_params
     params.require(:novel).permit(
-                  :title, :genre, :story_length, :plot, :image, :release, :character_role, :character_text).merge(
+                  :title, :genre, :story_length, :plot, :image, :release,
+                  character_attributes: [:id, :character_role, :character_text, :_destroy]).merge(
                   user_id: current_user.id)
   end
 end
