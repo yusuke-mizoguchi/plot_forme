@@ -26,12 +26,12 @@
             <%= f.text_area :plot, class: 'form-control', rows: 10 %>
           </div>
           <div id="characters">
-            <%= f.fields_for :characters do |character| %>
+            <%= f.fields_for :characters, local: true do |character| %>
               <%= render 'novels/character_fields', f: character %>
             <% end %>
             <div class="links">
               <%= link_to_add_association 'キャラクターの追加', f, :characters,
-              partial: 'novels/character_fields', class: "btn btn-primary mb-5" %>
+              partial: 'novels/character_fields', class: "btn btn-primary mb-5", type: "button" %>
             </div>
           </div>
   

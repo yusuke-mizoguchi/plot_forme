@@ -27,13 +27,13 @@
         <label class="tab-label" for="TAB-01">投稿した作品</label>
         <div class="tab-content">
           <%= render partial: 'user_novels', collection: @user_novels %>
-          <%= paginate @user_novels, :param_name => 'page_1', id: "js-show-novels", remote: true %>
+          <%= paginate @user_novels, id: "js-show-novels", remote: true %>
         </div>
         <input id="TAB-02" type="radio" name="TAB" class="tab-switch" checked="checked" />
         <label class="tab-label" for="TAB-02">批評した作品</label>
         <div class="tab-content">
           <%= render partial: 'user_reviews', collection: @user_reviews %>
-          <%= paginate @user_reviews, :param_name => 'page_2', id: "js-show-reviews", remote: true %>
+          <%= paginate @user_reviews, id: "js-show-reviews", remote: true %>
         </div>
       </div>
     </ul>
