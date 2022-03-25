@@ -6,5 +6,6 @@ require ("src/cocoon")
 import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
+import './add_jquery'
 import 'cocoon-js';
 import "@nathanvda/cocoon"
